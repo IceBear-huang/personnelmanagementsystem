@@ -1,11 +1,9 @@
 HELP.md
 target/
-!.mvn/wrapper/**
+.mvn/wrapper/**
 !**/src/main/**
 **/src/test/**
-!log/**
-!mvnw.cmd
-!mvnw
+log/**
 
 ### STS ###
 .apt_generated
