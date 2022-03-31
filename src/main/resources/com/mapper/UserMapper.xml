@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+
+    <select id="findRoleByUserId" resultType="com.pojo.Role">
+        SELECT
+            r.*
+        FROM
+            role r
+                LEFT JOIN user_role ur ON ur.role_id = r.id
+        WHERE
+            ur.user_id = #{userId}
+    </select>
+
+    <select id="findAuthByUserId" resultType="com.pojo.Auth">
+        SELECT
+            a.*
+        FROM
+            auth a
+                LEFT JOIN role_auth ra ON ra.auth_id = a.id
+                LEFT JOIN user_role ur ON ur.role_id = ra.role_id
+        WHERE
+            ur.user_id = #{userId}
+    </select>
+</mapper>
